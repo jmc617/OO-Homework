@@ -3,17 +3,19 @@
 // return the number supplied * 1 and from then on whatever
 // the current value is times the number supplied.getCurrentValue
 // should return the last answer returned from multiply.
+var getCurrentValue = []
   function Multiplier(x) {
-    this.x = x;
-    this.multiply = function (){
-      return((x*1)*x)
+    var x = x;
+    var multiply = function (){
+      if (getCurrentValue.length > 0) {
+        getCurrentValue.push((getCurrentValue[getCurrentValue.length-1])* x)
+      } else {
+        getCurrentValue.push(x*1)
+      }
     }
-    this.getCurrentValue = function(){
-      return this.multiply()
-    }
-    console.log(this.getCurrentValue());
+    multiply()
+    console.log(getCurrentValue[getCurrentValue.length-1]);
   }
-  Multiplier(9)
 // Implement an object model that allows you to store strings that
 // represent a Photo. Your model should include an Album object
 // that can contain many Photo objects in its photos attribute.
